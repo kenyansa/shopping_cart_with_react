@@ -33,3 +33,11 @@ function addToCart(e){
     `
     cartContainer.append(itemContainer);
 }
+//to access individual quantity fields
+for(let i=0;
+    i<quantityFields.length;
+    i++
+    ){
+        quantityFields[i].value = 1
+        quantityFields[i].addEventListener('change', totalCost)
+}
