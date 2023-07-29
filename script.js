@@ -48,7 +48,7 @@ for(let i=0;
     ){
         delete_buttons[i].addEventListener('click', removeItem)
 
-        //grandTotal()
+        grandTotal();
 }
 
 //multiplying the quantity and the price
@@ -64,4 +64,29 @@ function totalCost(e){
     if(isNaN(quantity.value) || quantity.value<= 0){
         quantity.value = 1;
     }
+}
+
+//function for add up total of the values orders
+function grandTotal(){
+    let total = 0;
+    let grand_total = document.getElementsByClassName("grand-total")[0]
+    all_total_fields = document.getElementsByClassName('total-price')
+    for(let i=0;
+        i<all_total_fields.length;
+        i++
+        ){
+            all_prices = Number(all_total_fields[i].innerText.replace('$', ''))
+            total +=all_prices;
+    }
+    grand_total.children[0].innerText = '$'+total
+    grand_total.children[0].computedStyleMap.fontweight = 'bold'
+    console.log(total);
+}
+
+function removeItem(e){
+    del_btn = e.target;
+    del_btn_parent =  del_btn.parentElement.parentElement;
+    del_btn_parent.remove();
+    console.log(del_btn);
+    grandTotal()
 }
