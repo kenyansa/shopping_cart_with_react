@@ -41,3 +41,10 @@ for(let i=0;
         quantityFields[i].value = 1
         quantityFields[i].addEventListener('change', totalCost)
 }
+
+for(let i=0;
+    i<delete_buttons.length;
+    i++
+    ){
+        delete_buttons[i].addEventListener('click', removeItem)
+}
