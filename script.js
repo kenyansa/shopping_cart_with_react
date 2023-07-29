@@ -47,4 +47,21 @@ for(let i=0;
     i++
     ){
         delete_buttons[i].addEventListener('click', removeItem)
+
+        //grandTotal()
+}
+
+//multiplying the quantity and the price
+function totalCost(e){
+    let quantity = e.target;
+    quantity_parent = quantity.parentElement.parentElement;
+    price_field = quantity_parent.getElementById('item-price')[0];
+    total_field = quantity_parent.getElementsByClassName('total-price')[0];
+    price_field.children[0].innerText = '$' + quantity.value*price_field_content
+
+    grandTotal()
+
+    if(isNaN(quantity.value) || quantity.value<= 0){
+        quantity.value = 1;
+    }
 }
