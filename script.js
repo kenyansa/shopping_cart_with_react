@@ -1,7 +1,7 @@
-let addToCartButtons = document.getElementById("btn-primary");
-let cartContainer = document.getElementsByTagName("tbody")[0];
-let quantityFields = document.getElementsByClassName("num");
-let delete_buttons = document.getElementsByClassName("uk-button-danger");
+const addToCartButtons = document.getElementById("btn-primary");
+const cartContainer = document.getElementsByTagName("tbody")[0];
+const quantityFields = document.getElementsByClassName("num");
+const delete_buttons = document.getElementsByClassName("uk-button-danger");
 
 //get all the add-to-cart buttons
 for(let i=0;
@@ -75,17 +75,17 @@ function grandTotal(){
         i<all_total_fields.length;
         i++
         ){
-            all_prices = Number(all_total_fields[i].innerText.replace('$', ''))
+           let all_prices = parseFloat(all_total_fields[i].innerText.slice(1));
             total +=all_prices;
     }
-    grand_total.children[0].innerText = '$'+total
-    grand_total.children[0].computedStyleMap.fontweight = 'bold'
+    grand_total.children[0].innerText = '$'+total;
+    grand_total.children[0].style.fontweight = 'bold';
     console.log(total);
 }
 
 function removeItem(e){
-    del_btn = e.target;
-    del_btn_parent =  del_btn.parentElement.parentElement;
+    let del_btn = e.target;
+    let del_btn_parent =  del_btn.parentElement.parentElement;
     del_btn_parent.remove();
     console.log(del_btn);
     grandTotal();
