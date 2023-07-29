@@ -5,7 +5,7 @@ let delete_buttons = document.getElementsByClassName("uk-button-danger");
 
 //get all the add-to-cart buttons
 for(let i=0;
-    i<addToCartButtons.clientHeight;
+    i<addToCartButtons.length;
     i++
     ){
         addToCartButtons[i].addEventListener('click', addToCart)
@@ -55,9 +55,9 @@ for(let i=0;
 function totalCost(e){
     let quantity = e.target;
     quantity_parent = quantity.parentElement.parentElement;
-    price_field = quantity_parent.getElementById('item-price')[0];
-    total_field = quantity_parent.getElementsByClassName('total-price')[0];
-    price_field.children[0].innerText = '$' + quantity.value*price_field_content
+    price_field = quantity_parent.getElementByClassName('item-price')[0];
+    total_field = quantity_parent.getElementByClassName('total-price')[0];
+    price_field.children[0].innerText = '$' + quantity.value*price_field_content[0].innerText;
 
     grandTotal()
 
@@ -88,5 +88,5 @@ function removeItem(e){
     del_btn_parent =  del_btn.parentElement.parentElement;
     del_btn_parent.remove();
     console.log(del_btn);
-    grandTotal()
+    grandTotal();
 }
