@@ -1,4 +1,4 @@
-const addToCartButtons = document.getElementById("btn-primary");
+const addToCartButtons = document.getElementsByClassName("btn-primary");
 const cartContainer = document.getElementsByTagName("tbody")[0];
 const quantityFields = document.getElementsByClassName("num");
 const delete_buttons = document.getElementsByClassName("uk-button-danger");
@@ -55,9 +55,9 @@ for(let i=0;
 function totalCost(e){
     let quantity = e.target;
     quantity_parent = quantity.parentElement.parentElement;
-    price_field = quantity_parent.getElementByClassName('item-price')[0];
-    total_field = quantity_parent.getElementByClassName('total-price')[0];
-    price_field.children[0].innerText = '$' + quantity.value*price_field_content[0].innerText;
+    price_field = quantity_parent.getElementsByClassName('item-price')[0];
+    total_field = quantity_parent.getElementsByClassName('total-price')[0];
+    price_field.children[0].innerText = '$' + quantity.value*price_field.innerText;
 
     grandTotal()
 
@@ -79,7 +79,7 @@ function grandTotal(){
             total +=all_prices;
     }
     grand_total.children[0].innerText = '$'+total;
-    grand_total.children[0].style.fontweight = 'bold';
+    grand_total.children[0].style.fontWeight = 'bold';
     console.log(total);
 }
 
