@@ -54,10 +54,12 @@ for(let i=0;
 //multiplying the quantity and the price
 function totalCost(e){
     let quantity = e.target;
-    quantity_parent = quantity.parentElement.parentElement;
-    price_field = quantity_parent.getElementsByClassName('item-price')[0];
-    total_field = quantity_parent.getElementsByClassName('total-price')[0];
-    price_field.children[0].innerText = '$' + quantity.value*price_field.innerText;
+    let quantity_parent = quantity.parentElement.parentElement;
+    let price_field = quantity_parent.getElementsByClassName('item-price')[0];
+    let total_field = quantity_parent.getElementsByClassName('total-price')[0];
+    let price_field_content = parseFloat(price_field.children[0].innerText.slice(1));
+
+    total_field.children[0].innerText = "$" + (quantity.value * price_field_content);
 
     grandTotal()
 
@@ -69,8 +71,8 @@ function totalCost(e){
 //function for add up total of the values orders
 function grandTotal(){
     let total = 0;
-    let grand_total = document.getElementsByClassName("grand-total")[0]
-    all_total_fields = document.getElementsByClassName('total-price')
+    let grand_total = document.getElementsByClassName("grand-total")[0];
+    all_total_fields = document.getElementsByClassName('total-price');
     for(let i=0;
         i<all_total_fields.length;
         i++
